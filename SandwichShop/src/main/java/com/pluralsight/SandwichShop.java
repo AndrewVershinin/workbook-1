@@ -10,6 +10,8 @@ public class SandwichShop {
         double regularPrice = 5.45;
         double largePrice = 8.95;
         double finalPrice = 0;
+        double regularLoaded = 1.00;
+        double largeLoaded = 1.75;
 
         System.out.println("Choose the size of the sandwich: ");
         System.out.printf("1: Regular: base price $%.2f\n ", regularPrice);
@@ -17,9 +19,6 @@ public class SandwichShop {
 
         System.out.print("Enter 1 or 2: ");
         int user_choice = input.nextInt();
-
-        System.out.println("What is your age?: ");
-        int user_age = input.nextInt();
 
         if (user_choice == 1) {
             finalPrice = regularPrice;
@@ -29,6 +28,28 @@ public class SandwichShop {
             System.out.println("Please choose the size of the sandwich (1 or 2)");
             return;
         }
+
+        input.nextLine();
+
+        System.out.print("Would you like the sandwich loaded? (yes/no): ");
+        String add_loaded = input.nextLine();
+
+        if (add_loaded.equalsIgnoreCase("yes")) {
+            if (user_choice == 1) {
+                finalPrice += regularLoaded;
+            } else if (user_choice == 2) {
+                finalPrice += largeLoaded;
+            }
+        } else if (!add_loaded.equalsIgnoreCase("no")) {
+            System.out.println("Please enter 'yes' or 'no'");
+            return;
+        }
+
+
+        System.out.print("What is your age?: ");
+        int user_age = input.nextInt();
+
+
 
         if (user_age <= 17) {
             finalPrice *= 0.9;
